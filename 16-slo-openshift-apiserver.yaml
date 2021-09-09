@@ -4,16 +4,16 @@ metadata:
   labels:
     prometheus: k8s
     role: alert-rules
-  name: openshift-apiserver-read-response-errors
+  name: openshift-apiserver-read-resource-response-errors
   namespace: pyrra
 spec:
   description: ""
   indicator:
     ratio:
       errors:
-        metric: apiserver_request_total{apiserver="openshift-apiserver",verb=~"LIST|GET",code=~"5.."}
+        metric: apiserver_request_total{apiserver="openshift-apiserver",scope="resource",verb=~"LIST|GET",code=~"5.."}
       total:
-        metric: apiserver_request_total{apiserver="openshift-apiserver",verb=~"LIST|GET"}
+        metric: apiserver_request_total{apiserver="openshift-apiserver",scope="resource",verb=~"LIST|GET"}
   target: "99.99"
   window: 4h
 ---
@@ -23,16 +23,16 @@ metadata:
   labels:
     prometheus: k8s
     role: alert-rules
-  name: openshift-apiserver-write-response-errors
+  name: openshift-apiserver-write-resource-response-errors
   namespace: pyrra
 spec:
   description: ""
   indicator:
     ratio:
       errors:
-        metric: apiserver_request_total{apiserver="openshift-apiserver",verb=~"POST|PUT|PATCH|DELETE",code=~"5.."}
+        metric: apiserver_request_total{apiserver="openshift-apiserver",scope="resource",verb=~"POST|PUT|PATCH|DELETE",code=~"5.."}
       total:
-        metric: apiserver_request_total{apiserver="openshift-apiserver",verb=~"POST|PUT|PATCH|DELETE"}
+        metric: apiserver_request_total{apiserver="openshift-apiserver",scope="resource",verb=~"POST|PUT|PATCH|DELETE"}
   target: "99"
   window: 4h
 ---
