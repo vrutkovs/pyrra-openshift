@@ -37,3 +37,22 @@ spec:
         metric: kubelet_http_requests_duration_seconds_count
   target: "99"
   window: 1d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: kubelet-pleg-relist-latency
+  namespace: pyrra
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: kubelet_pleg_relist_duration_seconds_bucket{le="0.1"}
+      total:
+        metric: kubelet_pleg_relist_duration_seconds_count
+  target: "99"
+  window: 1d
