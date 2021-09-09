@@ -5,16 +5,16 @@ metadata:
   labels:
     prometheus: k8s
     role: alert-rules
-  name: cco-reconcile-latency
+  name: cni-receive-dropped-packets
   namespace: pyrra
 spec:
   description: ""
   indicator:
-    latency:
-      success:
-        metric: cco_controller_reconcile_seconds_bucket{le="1"}
+    ratio:
+      errors:
+        metric: container_network_receive_packets_dropped_total
       total:
-        metric: cco_controller_reconcile_seconds_count{}
+        metric: container_network_receive_packets_total
   target: "99"
   window: 1d
 ---
@@ -24,15 +24,15 @@ metadata:
   labels:
     prometheus: k8s
     role: alert-rules
-  name: cco-reconcile-errors
+  name: cni-transmit-dropped-packets
   namespace: pyrra
 spec:
   description: ""
   indicator:
     ratio:
       errors:
-        metric: controller_runtime_reconcile_errors_total
+        metric: container_network_transmit_packets_dropped_total
       total:
-        metric: controller_runtime_reconcile_total
+        metric: container_network_transmit_packets_total
   target: "99"
   window: 1d
