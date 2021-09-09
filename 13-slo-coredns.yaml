@@ -30,8 +30,8 @@ spec:
   indicator:
     ratio:
       errors:
-        metric: coredns_dns_response_rcode_count_total{job="dns-default",rcode="SERVFAIL"}
+        metric: coredns_dns_responses_total{job="dns-default",rcode="SERVFAIL"}
       total:
-        metric: coredns_dns_response_rcode_count_total{job="dns-default"}
+        metric: coredns_dns_responses_total{job="dns-default"}
   target: "99.99"
   window: 1d
