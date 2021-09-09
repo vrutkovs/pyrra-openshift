@@ -36,3 +36,22 @@ spec:
         metric: ingress_canary_check_duration_count
   target: "99"
   window: 1d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ingress-backend-connection-error-ratio
+  namespace: pyrra
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: haproxy_backend_connection_errors_total
+      total:
+        metric: haproxy_backend_connections_total
+  target: "99"
+  window: 1d
