@@ -1,0 +1,20 @@
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: kubelet-operations-error-ratio
+  namespace: pyrra
+spec:
+  description: ''
+  indicator:
+    ratio:
+      errors:
+        metric: >-
+          kubelet_runtime_operations_errors_total
+      total:
+        metric: 'kubelet_runtime_operations_total'
+  target: '99'
+  window: 4h

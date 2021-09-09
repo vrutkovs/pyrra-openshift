@@ -1,0 +1,80 @@
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: cri-reconcile-error-ratio
+  namespace: pyrra
+spec:
+  description: ''
+  indicator:
+    ratio:
+      errors:
+        metric: >-
+          controller_runtime_reconcile_errors_total
+      total:
+        metric: 'controller_runtime_reconcile_total'
+  target: '99'
+  window: 4h
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: crio-containerstatus-error-ratio
+  namespace: pyrra
+spec:
+  description: ''
+  indicator:
+    ratio:
+      errors:
+        metric: >-
+          container_runtime_crio_operations_errors{operation_type="ContainerStatus"}
+      total:
+        metric: 'container_runtime_crio_operations{operation_type="ContainerStatus"}'
+  target: '99'
+  window: 4h
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: crio-runpodsandbox-error-ratio
+  namespace: pyrra
+spec:
+  description: ''
+  indicator:
+    ratio:
+      errors:
+        metric: >-
+          container_runtime_crio_operations_errors{operation_type="RunPodSandbox"}
+      total:
+        metric: 'container_runtime_crio_operations{operation_type="RunPodSandbox"}'
+  target: '99'
+  window: 4h
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: crio-stoppodsandbox-error-ratio
+  namespace: pyrra
+spec:
+  description: ''
+  indicator:
+    ratio:
+      errors:
+        metric: >-
+          container_runtime_crio_operations_errors{operation_type="StopPodSandbox"}
+      total:
+        metric: 'container_runtime_crio_operations{operation_type="StopPodSandbox"}'
+  target: '99'
+  window: 4h
