@@ -33,6 +33,6 @@ spec:
       success:
         metric: ingress_canary_check_duration_bucket{le="25"}
       total:
-        metric: ingress_canary_check_duration_bucket
+        metric: ingress_canary_check_duration_count
   target: "99"
   window: 1d
