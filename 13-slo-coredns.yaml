@@ -11,9 +11,9 @@ spec:
   indicator:
     latency:
       success:
-        metric: coredns_dns_request_duration_seconds_bucket{job="coredns",le="0.032"}
+        metric: coredns_dns_request_duration_seconds_bucket{job="dns-default",le="0.032"}
       total:
-        metric: coredns_dns_request_duration_seconds_count{job="coredns"}
+        metric: coredns_dns_request_duration_seconds_count{job="dns-default"}
   target: "99"
   window: 4h
 ---
@@ -30,8 +30,8 @@ spec:
   indicator:
     ratio:
       errors:
-        metric: coredns_dns_responses_total{job="coredns",rcode="SERVFAIL"}
+        metric: coredns_dns_responses_total{job="dns-default",rcode="SERVFAIL"}
       total:
-        metric: coredns_dns_responses_total{job="coredns"}
+        metric: coredns_dns_responses_total{job="dns-default"}
   target: "99.99"
   window: 4h
