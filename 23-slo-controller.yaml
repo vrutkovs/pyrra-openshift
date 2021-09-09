@@ -12,7 +12,7 @@ spec:
   indicator:
     latency:
       success:
-        metric: controller_runtime_reconcile_time_seconds_bucket{le="0.1"}
+        metric: controller_runtime_reconcile_time_seconds_bucket{le="1"}
       total:
         metric: controller_runtime_reconcile_time_seconds_count{}
   target: "99"
@@ -31,7 +31,7 @@ spec:
   indicator:
     latency:
       success:
-        metric: controller_runtime_webhook_latency_seconds_bucket{le="0.1"}
+        metric: controller_runtime_webhook_latency_seconds_bucket{le="1"}
       total:
         metric: controller_runtime_webhook_latency_seconds_count{}
   target: "99"
