@@ -55,3 +55,21 @@ spec:
   target: "99"
   window: 4h
 ---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: kube-apiserver-auth-request-latency
+  namespace: pyrra
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: authentication_duration_seconds_bucket{apiserver="kube-apiserver", le="1"}
+      total:
+        metric: authentication_duration_seconds_count{apiserver="kube-apiserver"}
+  target: "99"
+  window: 4h
