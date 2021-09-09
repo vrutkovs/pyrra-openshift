@@ -16,7 +16,7 @@ spec:
       total:
         metric: ovnkube_master_resource_update_latency_seconds_count{}
   target: "99"
-  window: 4h
+  window: 1d
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -35,7 +35,7 @@ spec:
       total:
         metric: ovnkube_master_sync_service_latency_seconds_count{}
   target: "99"
-  window: 4h
+  window: 1d
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -54,7 +54,7 @@ spec:
       total:
         metric: ovnkube_master_workqueue_queue_duration_seconds_count{}
   target: "99"
-  window: 4h
+  window: 1d
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -73,4 +73,4 @@ spec:
       total:
         metric: ovnkube_master_workqueue_work_duration_seconds_count{}
   target: "99"
-  window: 4h
+  window: 1d

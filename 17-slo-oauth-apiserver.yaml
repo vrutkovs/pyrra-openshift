@@ -16,5 +16,5 @@ spec:
       total:
         metric: authentication_duration_seconds_count{job="openshift-authentication"}
   target: "99"
-  window: 4h
+  window: 1d
 ---

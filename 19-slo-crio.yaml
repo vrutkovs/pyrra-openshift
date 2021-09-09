@@ -17,7 +17,7 @@ spec:
       total:
         metric: 'controller_runtime_reconcile_total'
   target: '99'
-  window: 4h
+  window: 1d
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -37,7 +37,7 @@ spec:
       total:
         metric: 'container_runtime_crio_operations{operation_type="ContainerStatus"}'
   target: '99'
-  window: 4h
+  window: 1d
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -57,7 +57,7 @@ spec:
       total:
         metric: 'container_runtime_crio_operations{operation_type="RunPodSandbox"}'
   target: '99'
-  window: 4h
+  window: 1d
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -77,4 +77,4 @@ spec:
       total:
         metric: 'container_runtime_crio_operations{operation_type="StopPodSandbox"}'
   target: '99'
-  window: 4h
+  window: 1d

@@ -15,7 +15,7 @@ spec:
       total:
         metric: etcd_disk_wal_fsync_duration_seconds_count{}
   target: "99"
-  window: 4h
+  window: 1d
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -34,4 +34,4 @@ spec:
       total:
         metric: etcd_disk_backend_commit_duration_seconds_count{}
   target: "99.99"
-  window: 4h
+  window: 1d

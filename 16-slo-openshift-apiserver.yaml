@@ -15,7 +15,7 @@ spec:
       total:
         metric: apiserver_request_total{apiserver="openshift-apiserver",scope="resource",verb=~"LIST|GET"}
   target: "99.99"
-  window: 4h
+  window: 1d
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -34,7 +34,7 @@ spec:
       total:
         metric: apiserver_request_total{apiserver="openshift-apiserver",scope="resource",verb=~"POST|PUT|PATCH|DELETE"}
   target: "99"
-  window: 4h
+  window: 1d
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -53,7 +53,7 @@ spec:
       total:
         metric: apiserver_request_duration_seconds_count{apiserver="openshift-apiserver",scope=~"resource|",verb=~"LIST|GET"}
   target: "99"
-  window: 4h
+  window: 1d
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -72,4 +72,4 @@ spec:
       total:
         metric: authentication_duration_seconds_count{apiserver="openshift-apiserver"}
   target: "99"
-  window: 4h
+  window: 1d
