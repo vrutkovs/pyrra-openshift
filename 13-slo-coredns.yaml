@@ -42,6 +42,25 @@ metadata:
   labels:
     prometheus: k8s
     role: alert-rules
+  name: coredns-kubeprogramming-latency
+  namespace: pyrra
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: coredns_kubernetes_dns_programming_duration_seconds_bucket{job="dns-default",le="0.032"}
+      total:
+        metric: coredns_kubernetes_dns_programming_duration_seconds_count{job="dns-default"}
+  target: "99"
+  window: 1d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
   name: coredns-response-errors
   namespace: pyrra
 spec:
