@@ -1,40 +1,3 @@
-apiVersion: pyrra.dev/v1alpha1
-kind: ServiceLevelObjective
-metadata:
-  labels:
-    prometheus: k8s
-    role: alert-rules
-  name: oauth-read-response-errors
-  namespace: pyrra
-spec:
-  description: ""
-  indicator:
-    ratio:
-      errors:
-        metric: apiserver_request_total{namespace="openshift-authentication",verb=~"LIST|GET",code=~"5.."}
-      total:
-        metric: apiserver_request_total{namespace="openshift-authentication",verb=~"LIST|GET"}
-  target: "99.99"
-  window: 4h
----
-apiVersion: pyrra.dev/v1alpha1
-kind: ServiceLevelObjective
-metadata:
-  labels:
-    prometheus: k8s
-    role: alert-rules
-  name: oauth-read-resource-request-latency
-  namespace: pyrra
-spec:
-  description: ""
-  indicator:
-    latency:
-      success:
-        metric: apiserver_request_duration_seconds_bucket{namespace="openshift-authentication",scope=~"resource|",verb=~"LIST|GET",le="1"}
-      total:
-        metric: apiserver_request_duration_seconds_count{namespace="openshift-authentication",scope=~"resource|",verb=~"LIST|GET"}
-  target: "99"
-  window: 4h
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -49,9 +12,9 @@ spec:
   indicator:
     latency:
       success:
-        metric: authentication_duration_seconds_bucket{namespace="openshift-authentication", le="1.024"}
+        metric: authentication_duration_seconds_bucket{job="openshift-authentication", le="1.024"}
       total:
-        metric: authentication_duration_seconds_count{namespace="openshift-authentication"}
+        metric: authentication_duration_seconds_count{job="openshift-authentication"}
   target: "99"
   window: 4h
 ---

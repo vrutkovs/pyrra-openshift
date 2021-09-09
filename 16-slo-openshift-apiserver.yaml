@@ -11,9 +11,9 @@ spec:
   indicator:
     ratio:
       errors:
-        metric: apiserver_request_total{namespace="openshift-apiserver",verb=~"LIST|GET",code=~"5.."}
+        metric: apiserver_request_total{apiserver="openshift-apiserver",verb=~"LIST|GET",code=~"5.."}
       total:
-        metric: apiserver_request_total{namespace="openshift-apiserver",verb=~"LIST|GET"}
+        metric: apiserver_request_total{apiserver="openshift-apiserver",verb=~"LIST|GET"}
   target: "99.99"
   window: 4h
 ---
@@ -30,9 +30,9 @@ spec:
   indicator:
     ratio:
       errors:
-        metric: apiserver_request_total{namespace="openshift-apiserver",verb=~"POST|PUT|PATCH|DELETE",code=~"5.."}
+        metric: apiserver_request_total{apiserver="openshift-apiserver",verb=~"POST|PUT|PATCH|DELETE",code=~"5.."}
       total:
-        metric: apiserver_request_total{namespace="openshift-apiserver",verb=~"POST|PUT|PATCH|DELETE"}
+        metric: apiserver_request_total{apiserver="openshift-apiserver",verb=~"POST|PUT|PATCH|DELETE"}
   target: "99"
   window: 4h
 ---
@@ -49,9 +49,9 @@ spec:
   indicator:
     latency:
       success:
-        metric: apiserver_request_duration_seconds_bucket{namespace="openshift-apiserver",scope=~"resource|",verb=~"LIST|GET",le="1"}
+        metric: apiserver_request_duration_seconds_bucket{apiserver="openshift-apiserver",scope=~"resource|",verb=~"LIST|GET",le="1"}
       total:
-        metric: apiserver_request_duration_seconds_count{namespace="openshift-apiserver",scope=~"resource|",verb=~"LIST|GET"}
+        metric: apiserver_request_duration_seconds_count{apiserver="openshift-apiserver",scope=~"resource|",verb=~"LIST|GET"}
   target: "99"
   window: 4h
 ---
