@@ -81,7 +81,7 @@ metadata:
   labels:
     prometheus: k8s
     role: alert-rules
-  name: ingress-server-connection-error-ratio
+  name: ingress-server-response-error-ratio
   namespace: pyrra
 spec:
   description: ""
