@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: pyrra
+  namespace: pyrra
+  labels:
+    app: pyrra
+    app.kubernetes.io/component: pyrra
+    app.kubernetes.io/instance: pyrra
+    app.kubernetes.io/part-of: pyrra-app
+    app.openshift.io/runtime-version: latest
+spec:
+  ports:
+    - name: 9099-tcp
+      protocol: TCP
+      port: 9099
+      targetPort: 9099
+  selector:
+    app: pyrra
+    deploymentconfig: pyrra
+  type: ClusterIP
+  sessionAffinity: None

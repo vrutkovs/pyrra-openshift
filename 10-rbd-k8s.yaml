@@ -1,0 +1,12 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pyrra-k8s-default
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: pyrra
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: pyrra-kubernetes
