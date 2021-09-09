@@ -49,7 +49,7 @@ spec:
   indicator:
     latency:
       success:
-        metric: coredns_kubernetes_dns_programming_duration_seconds_bucket{job="dns-default",le="0.032"}
+        metric: coredns_kubernetes_dns_programming_duration_seconds_bucket{job="dns-default",le="8.192"}
       total:
         metric: coredns_kubernetes_dns_programming_duration_seconds_count{job="dns-default"}
   target: "99"
