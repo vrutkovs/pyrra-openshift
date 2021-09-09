@@ -74,3 +74,61 @@ spec:
         metric: ovnkube_master_workqueue_work_duration_seconds_count{}
   target: "99"
   window: 1d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ovnkube-node-cnirequest-duration-latency
+  namespace: pyrra
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ovnkube_node_cni_request_duration_seconds_bucket{le="1.6"}
+      total:
+        metric: ovnkube_node_cni_request_duration_seconds_count{}
+  target: "99"
+  window: 1d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ovnkube-node-workqueue-queue-latency
+  namespace: pyrra
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ovnkube_node_workqueue_queue_duration_seconds_bucket{le="0.1"}
+      total:
+        metric: ovnkube_node_workqueue_queue_duration_seconds_count{}
+  target: "99"
+  window: 1d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ovnkube-node-work-duration-latency
+  namespace: pyrra
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ovnkube_node_workqueue_work_duration_seconds_bucket{le="0.1"}
+      total:
+        metric: ovnkube_node_workqueue_work_duration_seconds_count{}
+  target: "99"
+  window: 1d
+---
