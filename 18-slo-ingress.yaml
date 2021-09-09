@@ -12,9 +12,9 @@ spec:
   indicator:
     ratio:
       errors:
-        metric: haproxy_backend_http_responses_total{code="5xx"}
+        metric: haproxy_backend_http_responses_total{code="5xx",backend!="other/openshift_default"}
       total:
-        metric: haproxy_backend_http_responses_total
+        metric: haproxy_backend_http_responses_total{backend!="other/openshift_default"}
   target: "99"
   window: 1d
 ---
@@ -50,9 +50,9 @@ spec:
   indicator:
     ratio:
       errors:
-        metric: haproxy_backend_connection_errors_total
+        metric: haproxy_backend_connection_errors_total{backend!="other/openshift_default"}
       total:
-        metric: haproxy_backend_connections_total
+        metric: haproxy_backend_connections_total{backend!="other/openshift_default"}
   target: "99"
   window: 1d
 ---
@@ -88,8 +88,8 @@ spec:
   indicator:
     ratio:
       errors:
-        metric: haproxy_server_response_errors_total
+        metric: haproxy_server_response_errors_total{server!~"fe_.*"}
       total:
-        metric: haproxy_server_http_responses_total
+        metric: haproxy_server_http_responses_total{server!~"fe_.*"}
   target: "99"
   window: 1d
