@@ -1,3 +1,4 @@
+---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
 metadata:
@@ -14,5 +15,26 @@ spec:
         metric: prometheus_http_requests_total{job="prometheus-k8s",code=~"5.."}
       total:
         metric: prometheus_http_requests_total{job="prometheus-k8s"}
+  target: "99.99"
+  window: 1d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: prometheus-rule-evaluations-errors
+  namespace: pyrra
+spec:
+  description: "Rule and alerting rules are being evaluated every few seconds. This
+    needs to work for recording rules to be created and most importantly for alerts
+    to be evaluated."
+  indicator:
+    ratio:
+      errors:
+        metric: prometheus_rule_evaluation_failures_total{job="prometheus-k8s"}
+      total:
+        metric: prometheus_rule_evaluations_total{job="prometheus-k8s"}
   target: "99.99"
   window: 1d
