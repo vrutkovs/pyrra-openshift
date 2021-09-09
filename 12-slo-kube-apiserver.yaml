@@ -68,7 +68,7 @@ spec:
   indicator:
     latency:
       success:
-        metric: authentication_duration_seconds_bucket{apiserver="kube-apiserver", le="1"}
+        metric: authentication_duration_seconds_bucket{apiserver="kube-apiserver", le="1.024"}
       total:
         metric: authentication_duration_seconds_count{apiserver="kube-apiserver"}
   target: "99"

@@ -35,22 +35,3 @@ spec:
         metric: etcd_disk_backend_commit_duration_seconds_count{}
   target: "99.99"
   window: 4h
----
-apiVersion: pyrra.dev/v1alpha1
-kind: ServiceLevelObjective
-metadata:
-  labels:
-    prometheus: k8s
-    role: alert-rules
-  name: etcd-backend-commit-duration
-  namespace: pyrra
-spec:
-  description: ""
-  indicator:
-    latency:
-      success:
-        metric: etcd_disk_backend_commit_duration_seconds_bucket{le="0.512"}
-      total:
-        metric: etcd_disk_backend_commit_duration_seconds_count{}
-  target: "99.99"
-  window: 4h
