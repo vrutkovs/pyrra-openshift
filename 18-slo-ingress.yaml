@@ -31,7 +31,7 @@ spec:
   indicator:
     latency:
       success:
-        metric: ingress_canary_check_duration_bucket{le="25"}
+        metric: ingress_canary_check_duration_bucket{le="200"}
       total:
         metric: ingress_canary_check_duration_count
   target: "99"
