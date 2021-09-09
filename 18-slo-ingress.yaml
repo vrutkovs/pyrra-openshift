@@ -17,3 +17,22 @@ spec:
         metric: haproxy_backend_http_responses_total
   target: "99"
   window: 1d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ingress-canary-latency
+  namespace: pyrra
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ingress_canary_check_duration_bucket{le="25"}
+      total:
+        metric: ingress_canary_check_duration_bucket
+  target: "99"
+  window: 1d
