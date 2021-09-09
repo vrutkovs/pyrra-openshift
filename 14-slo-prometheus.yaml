@@ -15,4 +15,4 @@ spec:
       total:
         metric: prometheus_http_requests_total{job="prometheus-k8s"}
   target: "99.99"
-  window: 2w
+  window: 4h

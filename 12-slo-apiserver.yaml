@@ -15,7 +15,7 @@ spec:
       total:
         metric: apiserver_request_total{job="apiserver",verb=~"LIST|GET"}
   target: "99.99"
-  window: 2w
+  window: 4h
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -34,7 +34,7 @@ spec:
       total:
         metric: apiserver_request_total{job="apiserver",verb=~"POST|PUT|PATCH|DELETE"}
   target: "99"
-  window: 1w
+  window: 4h
 ---
 apiVersion: pyrra.dev/v1alpha1
 kind: ServiceLevelObjective
@@ -53,5 +53,5 @@ spec:
       total:
         metric: apiserver_request_duration_seconds_count{job="apiserver",scope=~"resource|",verb=~"LIST|GET"}
   target: "99"
-  window: 2w
+  window: 4h
 ---
