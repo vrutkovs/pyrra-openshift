@@ -32,7 +32,7 @@ spec:
         - name: pyrra
           args:
           - api
-          - --prometheus-url=https://prometheus-k8s-openshift-monitoring.apps.vrutkovs.devcluster.openshift.com/
+          - --prometheus-url=https://prometheus-k8s-openshift-monitoring.apps.vrutkovs-aws48.devcluster.openshift.com/
           - --prometheus-bearer-token-path=/var/run/secrets/kubernetes.io/serviceaccount/token
           - --api-url=http://pyrra-k8s.pyrra.svc.cluster.local:9444
           image: 'pyrra:latest'
