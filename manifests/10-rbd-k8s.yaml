@@ -1,7 +1,8 @@
-kind: ClusterRoleBinding
+kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: pyrra-k8s-default
+  namespace: pyrra
 subjects:
   - kind: ServiceAccount
     name: default

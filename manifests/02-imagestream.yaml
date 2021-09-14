@@ -15,7 +15,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: 'ghcr.io/vrutkovs/pyrra:latest'
+        name: 'ghcr.io/vrutkovs/pyrra:k8s-namespaced'
       importPolicy: {}
       referencePolicy:
         type: Local
