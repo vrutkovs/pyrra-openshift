@@ -1,0 +1,16 @@
+resources:
+- cco.yaml
+- cni.yaml
+- controller.yaml
+- coredns.yaml
+- crio.yaml
+- csi.yaml
+- etcd.yaml
+- ingress.yaml
+- kube-apiserver.yaml
+- kubelet.yaml
+- oauth-apiserver.yaml
+- openshift-apiserver.yaml
+- ovn.yaml
+- prometheus.yaml
+- scheduler.yaml

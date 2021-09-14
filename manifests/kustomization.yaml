@@ -1,0 +1,13 @@
+resources:
+- 00-crd.yaml
+- 01-namespace.yaml
+- 02-imagestream.yaml
+- 03-deployment.yaml
+- 04-pyrra-k8s-deployment.yaml
+- 05-pyrra-svc.yaml
+- 06-pyrra-k8s-svc.yaml
+- 07-pyrra-route.yaml
+- 08-pyrra-k8s-route.yaml
+- 09-role.yaml
+- 10-rbd-k8s.yaml
+- 11-rbd-prom-access.yaml

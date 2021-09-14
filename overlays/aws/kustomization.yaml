@@ -1,0 +1,11 @@
+resources:
+  - ../../manifests
+  - ../../slo
+patchesJson6902:
+  - target:
+      kind: Deployment
+      name: pyrra
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/args/1
+        value: --prometheus-url=https://prometheus-k8s-openshift-monitoring.apps.vrutkovs.devcluster.openshift.com/
