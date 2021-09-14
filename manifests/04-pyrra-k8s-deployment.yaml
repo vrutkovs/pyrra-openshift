@@ -4,7 +4,7 @@ metadata:
   annotations:
     alpha.image.policy.openshift.io/resolve-names: '*'
     image.openshift.io/triggers: >-
-      [{"from":{"kind":"ImageStreamTag","name":"pyrra:latest","namespace":"pyrra"},"fieldPath":"spec.template.spec.containers[?(@.name==\"pyrra-k8s\")].image","pause":"false"}]
+      [{"from":{"kind":"ImageStreamTag","name":"pyrra:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"pyrra-k8s\")].image","pause":"false"}]
     openshift.io/generated-by: OpenShiftWebConsole
   name: pyrra-k8s
   labels:
