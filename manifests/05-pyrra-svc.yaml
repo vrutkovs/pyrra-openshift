@@ -2,7 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: pyrra
-  namespace: pyrra
   labels:
     app: pyrra
     app.kubernetes.io/component: pyrra

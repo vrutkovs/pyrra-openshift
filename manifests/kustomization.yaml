@@ -1,6 +1,5 @@
 resources:
-- 00-crd.yaml
-- 01-namespace.yaml
+- 01-crd.yaml
 - 02-imagestream.yaml
 - 03-deployment.yaml
 - 04-pyrra-k8s-deployment.yaml

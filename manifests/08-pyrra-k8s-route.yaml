@@ -2,7 +2,6 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: pyrra-k8s
-  namespace: pyrra
   labels:
     app: pyrra-k8s
     app.kubernetes.io/component: pyrra-k8s

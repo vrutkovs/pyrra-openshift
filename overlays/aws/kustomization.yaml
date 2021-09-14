@@ -1,3 +1,4 @@
+namespace: pyrra
 resources:
   - ../../manifests
   - ../../slo

@@ -7,7 +7,6 @@ metadata:
       [{"from":{"kind":"ImageStreamTag","name":"pyrra:latest","namespace":"pyrra"},"fieldPath":"spec.template.spec.containers[?(@.name==\"pyrra-k8s\")].image","pause":"false"}]
     openshift.io/generated-by: OpenShiftWebConsole
   name: pyrra-k8s
-  namespace: pyrra
   labels:
     app: pyrra-k8s
     app.kubernetes.io/component: pyrra-k8s
