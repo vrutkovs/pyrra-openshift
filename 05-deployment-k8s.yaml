@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    alpha.image.policy.openshift.io/resolve-names: '*'
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"pyrra:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"pyrra-k8s\")].image","pause":"false"}]'
+    openshift.io/generated-by: OpenShiftWebConsole
+  labels:
+    app: pyrra-k8s
+    app.kubernetes.io/component: pyrra-k8s
+    app.kubernetes.io/instance: pyrra-k8s
+    app.kubernetes.io/part-of: pyrra-app
+    app.openshift.io/runtime-namespace: pyrra
+  name: pyrra-k8s
+  namespace: openshift-monitoring
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: pyrra-k8s
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftWebConsole
+      creationTimestamp: null
+      labels:
+        app: pyrra-k8s
+        deploymentconfig: pyrra-k8s
+    spec:
+      containers:
+      - args:
+        - kubernetes
+        - --namespace=$(NAMESPACE)
+        env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: pyrra:latest
+        imagePullPolicy: Always
+        name: pyrra-k8s
+        ports:
+        - containerPort: 9444
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: pyrra-k8s
+      terminationGracePeriodSeconds: 30

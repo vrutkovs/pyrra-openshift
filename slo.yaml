@@ -1,0 +1,852 @@
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: cco-reconcile-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: cco_controller_reconcile_seconds_bucket{le="1"}
+      total:
+        metric: cco_controller_reconcile_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: cni-receive-dropped-packets
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: container_network_receive_packets_dropped_total
+      total:
+        metric: container_network_receive_packets_total
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: cni-transmit-dropped-packets
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: container_network_transmit_packets_dropped_total
+      total:
+        metric: container_network_transmit_packets_total
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: controller-runtime-reconcile-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: controller_runtime_reconcile_time_seconds_bucket{le="5"}
+      total:
+        metric: controller_runtime_reconcile_time_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: controller-runtime-webhook-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: controller_runtime_webhook_latency_seconds_bucket{le="1"}
+      total:
+        metric: controller_runtime_webhook_latency_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: coredns-forwardrequest-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: coredns_forward_request_duration_seconds_bucket{job="dns-default",le="1.024"}
+      total:
+        metric: coredns_forward_request_duration_seconds_count{job="dns-default"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: coredns-kubeprogramming-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: coredns_kubernetes_dns_programming_duration_seconds_bucket{job="dns-default",le="16.384"}
+      total:
+        metric: coredns_kubernetes_dns_programming_duration_seconds_count{job="dns-default"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: coredns-request-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: coredns_dns_request_duration_seconds_bucket{job="dns-default",le="0.032"}
+      total:
+        metric: coredns_dns_request_duration_seconds_count{job="dns-default"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: coredns-response-errors
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: coredns_dns_responses_total{job="dns-default",rcode="SERVFAIL"}
+      total:
+        metric: coredns_dns_responses_total{job="dns-default"}
+  target: "99.99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: cri-reconcile-error-ratio
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: controller_runtime_reconcile_errors_total
+      total:
+        metric: controller_runtime_reconcile_total
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: crio-containerstatus-error-ratio
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: container_runtime_crio_operations_errors{operation_type="ContainerStatus"}
+      total:
+        metric: container_runtime_crio_operations{operation_type="ContainerStatus"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: csi-operations-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: csi_operations_seconds_bucket{le="0.1"}
+      total:
+        metric: csi_operations_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: csi-sidecar-operations-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: csi_sidecar_operations_seconds_bucket{le="0.1"}
+      total:
+        metric: csi_sidecar_operations_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: etcd-backend-commit-duration
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: etcd_disk_backend_commit_duration_seconds_bucket{le="0.064"}
+      total:
+        metric: etcd_disk_backend_commit_duration_seconds_count{}
+  target: "99.99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: etcd-disk-wal-duration
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: etcd_disk_wal_fsync_duration_seconds_bucket{le="0.032"}
+      total:
+        metric: etcd_disk_wal_fsync_duration_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ingress-5xx-ratio
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: haproxy_backend_http_responses_total{code="5xx",backend!="other/openshift_default"}
+      total:
+        metric: haproxy_backend_http_responses_total{backend!="other/openshift_default"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ingress-backend-connection-error-ratio
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: haproxy_backend_connection_errors_total{backend!="other/openshift_default"}
+      total:
+        metric: haproxy_backend_connections_total{backend!="other/openshift_default"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ingress-canary-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ingress_canary_check_duration_bucket{le="200"}
+      total:
+        metric: ingress_canary_check_duration_count
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ingress-server-connection-error-ratio
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: haproxy_server_connection_errors_total
+      total:
+        metric: haproxy_server_connections_total
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ingress-server-response-error-ratio
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: haproxy_server_response_errors_total{server!~"fe_.*"}
+      total:
+        metric: haproxy_server_http_responses_total{server!~"fe_.*"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: kube-apiserver-auth-request-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: authentication_duration_seconds_bucket{apiserver="kube-apiserver",
+          le="1.024"}
+      total:
+        metric: authentication_duration_seconds_count{apiserver="kube-apiserver"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: kube-apiserver-read-resource-request-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: apiserver_request_duration_seconds_bucket{job="apiserver",scope=~"resource|",verb=~"LIST|GET",le="1"}
+      total:
+        metric: apiserver_request_duration_seconds_count{job="apiserver",scope=~"resource|",verb=~"LIST|GET"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: kube-apiserver-read-response-errors
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: apiserver_request_total{job="apiserver",verb=~"LIST|GET",code=~"5.."}
+      total:
+        metric: apiserver_request_total{job="apiserver",verb=~"LIST|GET"}
+  target: "99.99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: kube-apiserver-write-resource-response-errors
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: apiserver_request_total{job="apiserver",scope="resource",verb=~"POST|PUT|PATCH|DELETE",code=~"5.."}
+      total:
+        metric: apiserver_request_total{job="apiserver",scope="resource",verb=~"POST|PUT|PATCH|DELETE"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: kubelet-http-request-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: kubelet_http_requests_duration_seconds_bucket{le="0.1"}
+      total:
+        metric: kubelet_http_requests_duration_seconds_count
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: kubelet-operations-error-ratio
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: kubelet_runtime_operations_errors_total
+      total:
+        metric: kubelet_runtime_operations_total
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: kubelet-pleg-relist-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: kubelet_pleg_relist_duration_seconds_bucket{le="0.1"}
+      total:
+        metric: kubelet_pleg_relist_duration_seconds_count
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: oauth-auth-request-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: authentication_duration_seconds_bucket{job="openshift-authentication",
+          le="1.024"}
+      total:
+        metric: authentication_duration_seconds_count{job="openshift-authentication"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: openshift-apiserver-auth-request-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: authentication_duration_seconds_bucket{apiserver="openshift-apiserver",
+          le="1.024"}
+      total:
+        metric: authentication_duration_seconds_count{apiserver="openshift-apiserver"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: openshift-apiserver-read-resource-request-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: apiserver_request_duration_seconds_bucket{apiserver="openshift-apiserver",scope=~"resource|",verb=~"LIST|GET",le="1"}
+      total:
+        metric: apiserver_request_duration_seconds_count{apiserver="openshift-apiserver",scope=~"resource|",verb=~"LIST|GET"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: openshift-apiserver-read-resource-response-errors
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: apiserver_request_total{apiserver="openshift-apiserver",scope="resource",verb=~"LIST|GET",code=~"5.."}
+      total:
+        metric: apiserver_request_total{apiserver="openshift-apiserver",scope="resource",verb=~"LIST|GET"}
+  target: "99.99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: openshift-apiserver-write-resource-response-errors
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: apiserver_request_total{apiserver="openshift-apiserver",scope="resource",verb=~"POST|PUT|PATCH|DELETE",code=~"5.."}
+      total:
+        metric: apiserver_request_total{apiserver="openshift-apiserver",scope="resource",verb=~"POST|PUT|PATCH|DELETE"}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ovnkube-master-syncservice-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ovnkube_master_sync_service_latency_seconds_bucket{le="1.6"}
+      total:
+        metric: ovnkube_master_sync_service_latency_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ovnkube-master-update-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ovnkube_master_resource_update_latency_seconds_bucket{le="1.6"}
+      total:
+        metric: ovnkube_master_resource_update_latency_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ovnkube-master-work-duration-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ovnkube_master_workqueue_work_duration_seconds_bucket{le="0.1"}
+      total:
+        metric: ovnkube_master_workqueue_work_duration_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ovnkube-master-workqueue-queue-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ovnkube_master_workqueue_queue_duration_seconds_bucket{le="0.1"}
+      total:
+        metric: ovnkube_master_workqueue_queue_duration_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ovnkube-node-cnirequest-duration-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ovnkube_node_cni_request_duration_seconds_bucket{le="1.6"}
+      total:
+        metric: ovnkube_node_cni_request_duration_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ovnkube-node-work-duration-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ovnkube_node_workqueue_work_duration_seconds_bucket{le="0.1"}
+      total:
+        metric: ovnkube_node_workqueue_work_duration_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: ovnkube-node-workqueue-queue-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: ovnkube_node_workqueue_queue_duration_seconds_bucket{le="0.1"}
+      total:
+        metric: ovnkube_node_workqueue_queue_duration_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: prometheus-http-errors
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    ratio:
+      errors:
+        metric: prometheus_http_requests_total{job="prometheus-k8s",code=~"5.."}
+      total:
+        metric: prometheus_http_requests_total{job="prometheus-k8s"}
+  target: "99.99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: prometheus-rule-evaluations-errors
+  namespace: openshift-monitoring
+spec:
+  description: Rule and alerting rules are being evaluated every few seconds. This
+    needs to work for recording rules to be created and most importantly for alerts
+    to be evaluated.
+  indicator:
+    ratio:
+      errors:
+        metric: prometheus_rule_evaluation_failures_total{job="prometheus-k8s"}
+      total:
+        metric: prometheus_rule_evaluations_total{job="prometheus-k8s"}
+  target: "99.99"
+  window: 7d
+---
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: scheduler-latency
+  namespace: openshift-monitoring
+spec:
+  description: ""
+  indicator:
+    latency:
+      success:
+        metric: scheduler_scheduling_algorithm_duration_seconds_bucket{le="1.024"}
+      total:
+        metric: scheduler_scheduling_algorithm_duration_seconds_count{}
+  target: "99"
+  window: 7d
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  labels:
+    app: pyrra
+    app.kubernetes.io/component: pyrra
+    app.kubernetes.io/instance: pyrra
+    app.kubernetes.io/part-of: pyrra-app
+    app.openshift.io/runtime-version: latest
+  name: pyrra
+  namespace: openshift-monitoring
+spec:
+  port:
+    targetPort: 9099-tcp
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: pyrra
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  labels:
+    app: pyrra-k8s
+    app.kubernetes.io/component: pyrra-k8s
+    app.kubernetes.io/instance: pyrra-k8s
+    app.kubernetes.io/part-of: pyrra-app
+  name: pyrra-k8s
+  namespace: openshift-monitoring
+spec:
+  port:
+    targetPort: 9444-tcp
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: pyrra-k8s
+    weight: 100
+  wildcardPolicy: None
