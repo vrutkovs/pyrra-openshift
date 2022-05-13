@@ -1,0 +1,23 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: pyrra
+  namespace: openshift-monitoring
+  labels:
+    app: pyrra
+    app.kubernetes.io/component: pyrra
+    app.kubernetes.io/instance: pyrra
+    app.kubernetes.io/part-of: pyrra-app
+    app.openshift.io/runtime-version: latest
+spec:
+  host: pyrra-openshift-monitoring.apps.kubecon2022.c3re.p1.openshiftapps.com
+  to:
+    kind: Service
+    name: pyrra
+    weight: 100
+  port:
+    targetPort: 9099-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
